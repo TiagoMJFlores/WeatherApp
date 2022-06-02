@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="234" id="VFE-Ff-xRG" customClass="WeatherDaysTableViewCell" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="415" height="234"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VFE-Ff-xRG" id="7yy-Dv-zFc">
+                <rect key="frame" x="0.0" y="0.0" width="415" height="234"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8H-Nt-VbM">
+                        <rect key="frame" x="16" y="10" width="383" height="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RmS-8A-eFC">
+                        <rect key="frame" x="16" y="40" width="383" height="172"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="172" id="2qv-pb-4w8"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qxZ-HO-xVh">
+                            <size key="itemSize" width="357" height="132"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="VFE-Ff-xRG" id="3mc-76-Rf3"/>
+                            <outlet property="delegate" destination="VFE-Ff-xRG" id="vmQ-jx-BJJ"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RmS-8A-eFC" firstAttribute="top" secondItem="s8H-Nt-VbM" secondAttribute="bottom" constant="11" id="0xT-u1-54k"/>
+                    <constraint firstAttribute="bottom" secondItem="RmS-8A-eFC" secondAttribute="bottom" constant="22" id="Mbw-MI-ASR"/>
+                    <constraint firstItem="RmS-8A-eFC" firstAttribute="leading" secondItem="7yy-Dv-zFc" secondAttribute="leading" constant="16" id="bej-WF-O5b"/>
+                    <constraint firstAttribute="trailing" secondItem="RmS-8A-eFC" secondAttribute="trailing" constant="16" id="d7x-7s-xNk"/>
+                    <constraint firstItem="s8H-Nt-VbM" firstAttribute="leading" secondItem="7yy-Dv-zFc" secondAttribute="leading" constant="16" id="pv5-yv-Thx"/>
+                    <constraint firstItem="s8H-Nt-VbM" firstAttribute="top" secondItem="7yy-Dv-zFc" secondAttribute="top" constant="10" id="rir-Tw-qrx"/>
+                    <constraint firstAttribute="trailing" secondItem="s8H-Nt-VbM" secondAttribute="trailing" constant="16" id="yFq-7H-hTK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionView" destination="RmS-8A-eFC" id="dtZ-mr-Kbj"/>
+                <outlet property="titleLabel" destination="s8H-Nt-VbM" id="7qz-GD-x17"/>
+            </connections>
+            <point key="canvasLocation" x="74.637681159420296" y="-308.03571428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
