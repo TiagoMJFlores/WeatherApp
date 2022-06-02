@@ -49,6 +49,7 @@ extension WeatherListPresenter: WeatherListDelegate {
                   self.view?.reloadData()
                  
             case .failure(let error):
+                self.view?.showErrorAlert(message: error.localizedDescription)
                 break
             }
         }

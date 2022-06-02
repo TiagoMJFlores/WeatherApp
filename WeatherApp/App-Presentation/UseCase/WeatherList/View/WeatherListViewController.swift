@@ -8,42 +8,6 @@
 import UIKit
 import Resolver
 
-extension UIView {
-    
-    static var reuseIdentifier: String {
-        return NSStringFromClass(self)
-    }
-}
-
-extension UITableView {
-    
-    public func register<T: UITableViewCell>(cellClass: T.Type) {
-        register(UINib(nibName:  cellClass.reuseIdentifier, bundle:  nil), forCellReuseIdentifier:  cellClass.reuseIdentifier)
-    }
-    
-    public func dequeue<T: UITableViewCell>(cellClass: T.Type) -> T? {
-        return dequeueReusableCell(withIdentifier: cellClass.reuseIdentifier) as? T
-    }
-
-    public func dequeue<T: UITableViewCell>(cellClass: T.Type, forIndexPath indexPath: IndexPath) -> T {
-        guard let cell = dequeueReusableCell(
-            withIdentifier: cellClass.reuseIdentifier, for: indexPath) as? T else {
-                fatalError(
-                    "Error: cell with id: \(cellClass.reuseIdentifier) for indexPath: \(indexPath) is not \(T.self)")
-        }
-        return cell
-    }
-    
-}
-
-extension UICollectionView {
-    
-    public func register<T: UICollectionViewCell>(cellClass: T.Type) {
-        self.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
-    }
-    
-}
-
 
 final class WeatherListViewController: UIViewController {
 
@@ -70,10 +34,7 @@ final class WeatherListViewController: UIViewController {
     
     
     private func setupTableview() {
-        
-        tableView.register(
-            WeatherDaysTableViewCell.nib,
-                    forCellReuseIdentifier: WeatherDaysTableViewCell.reuseIdentifier)
+        tableView.registerNib(cellClass: WeatherDaysTableViewCell.self)
     }
 
 }
@@ -88,7 +49,7 @@ extension WeatherListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherDaysTableViewCell.reuseIdentifier) as? WeatherDaysTableViewCell  else {
+        guard let cell = tableView.dequeue(cellClass: WeatherDaysTableViewCell.self) else {
             return UITableViewCell()
         }
         
@@ -101,6 +62,13 @@ extension WeatherListViewController: UITableViewDataSource {
 
 // MARK: WeatherViewReceiver
 extension WeatherListViewController: WeatherViewReceiver {
+    
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+                     
     
     func reloadData() {
         tableView.reloadData()

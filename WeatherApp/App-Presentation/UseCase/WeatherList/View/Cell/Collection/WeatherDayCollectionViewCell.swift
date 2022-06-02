@@ -10,10 +10,7 @@ import UIKit
 
 final class WeatherDayCollectionViewCell: UICollectionViewCell {
     
-    static var nib: UINib {
-           return UINib(nibName: String(describing: self), bundle: nil)
-    }
-    
+ 
    fileprivate enum Constants {
         static let titleLabelFontSize: CGFloat = 13
         static let weatherImageViewCornerRadius: CGFloat = 12

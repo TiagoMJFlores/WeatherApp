@@ -9,11 +9,6 @@ import Foundation
 import UIKit
 
 final class WeatherDaysTableViewCell: UITableViewCell {
-
-
-    static var nib: UINib {
-           return UINib(nibName: String(describing: self), bundle: nil)
-    }
     
     fileprivate enum Constants {
         static let collectionViewHeight: CGFloat = 160
@@ -37,9 +32,7 @@ final class WeatherDaysTableViewCell: UITableViewCell {
     
     private func configureView() {
         titleLabel.textAlignment = .center;
-        collectionView.register(
-            WeatherDayCollectionViewCell.nib,
-            forCellWithReuseIdentifier: WeatherDayCollectionViewCell.reuseIdentifier)
+        collectionView.registerNib(cellClass: WeatherDayCollectionViewCell.self)
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         collectionView.contentInsetAdjustmentBehavior = .never
@@ -63,7 +56,8 @@ extension WeatherDaysTableViewCell: UICollectionViewDelegate,  UICollectionViewD
     
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  WeatherDayCollectionViewCell.reuseIdentifier, for: indexPath) as? WeatherDayCollectionViewCell,
+        let cell = collectionView.dequeue(cellClass: WeatherDayCollectionViewCell.self, forIndexPath: indexPath)
+        guard
               let presenter = presenter else {
             return UICollectionViewCell()
         }
