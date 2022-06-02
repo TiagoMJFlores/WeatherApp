@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol WeatherAPIClientProtocol {
-    func getLisbonWeatherList(completion: @escaping (Result<WeatherDataContainer, Error>) -> ())
+    func getWeatherList(cityName: String, completion: @escaping (Result<WeatherDataContainer, Error>) -> ())
 }
 
 final class WeatherAPIClient {
@@ -18,8 +18,9 @@ final class WeatherAPIClient {
 
 extension WeatherAPIClient: WeatherAPIClientProtocol {
     
-    func getLisbonWeatherList(completion: @escaping (Result<WeatherDataContainer, Error>) -> ()) {
-        AF.request("https://api.openweathermap.org/data/2.5/forecast", parameters: ["q": "Lisbon", "appid": "5b9b1ff07f3972c825ba43eb281a31c7"])
+    func getWeatherList(cityName: String, completion: @escaping (Result<WeatherDataContainer, Error>) -> ()) {
+        let endpoint = WeatherEndPoint.forecast(city: "Lisbon")
+        AF.request(endpoint.path, parameters: endpoint.queryParams)
             .validate()
             .responseDecodable(of: WeatherDataContainer.self) { (response) in
                 guard let data = response.value else {

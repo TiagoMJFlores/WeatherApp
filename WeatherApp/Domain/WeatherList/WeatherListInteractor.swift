@@ -20,7 +20,7 @@ class WeatherListInteractor {
 extension WeatherListInteractor: WeatherListInteractorProtocol {
     
     func getLisbonWeatherList(completion: @escaping (Result<WeatherDataContainer, Error>) -> ()) {
-        apiClient.getLisbonWeatherList(completion: completion)
+        apiClient.getWeatherList(cityName: "Lisbon", completion: completion)
     }
     
 }
