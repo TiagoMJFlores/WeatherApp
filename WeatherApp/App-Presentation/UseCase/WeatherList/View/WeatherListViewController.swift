@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Resolver
 
 extension UIView {
     
@@ -50,23 +50,21 @@ final class WeatherListViewController: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
     
-    var presenter: WeatherListPresenterProtocol?
+    @Injected var presenter: WeatherListPresenterProtocol
     
     init(presenter: WeatherListPresenterProtocol) {
-        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
-        presenter = WeatherListPresenter()
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableview()
-        presenter?.bindView(view: self)
-        presenter?.loadData()
+        presenter.bindView(view: self)
+        presenter.loadData()
     }
     
     
@@ -85,15 +83,16 @@ final class WeatherListViewController: UIViewController {
 extension WeatherListViewController: UITableViewDataSource {
     
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return presenter?.numberItems() ?? 0
+    return presenter.numberItems()
   }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherDaysTableViewCell.reuseIdentifier) as? WeatherDaysTableViewCell, let itemPresenter = presenter?.item(at: indexPath)  else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherDaysTableViewCell.reuseIdentifier) as? WeatherDaysTableViewCell  else {
             return UITableViewCell()
         }
         
+        let itemPresenter = presenter.item(at: indexPath)
         cell.configure(presenter: itemPresenter)
         return cell
     }

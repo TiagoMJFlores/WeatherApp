@@ -5,7 +5,7 @@
 //  Created by Tiago Flores on 30/05/2022.
 //
 
-import Foundation
+import Resolver
 
 typealias WeatherListPresenterProtocol = WeatherListDelegate & WeatherListDataSource
 
@@ -13,8 +13,9 @@ typealias WeatherListPresenterProtocol = WeatherListDelegate & WeatherListDataSo
 final class WeatherListPresenter {
     
     weak var view: WeatherViewReceiver?
-    var interactor = WeatherListInteractor()
-    private let imageDownloader = ImageDownloader()
+    
+    @Injected var interactor: WeatherListInteractorProtocol
+    @Injected var imageDownloader: ImageDownloaderProtocol
 
     private var weatherViewData: [WeatherDayViewModel] = []
     

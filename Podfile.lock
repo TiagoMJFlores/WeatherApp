@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.4.4)
+  - Resolver (1.5.0)
 
 DEPENDENCIES:
   - Alamofire
+  - Resolver (= 1.5.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Resolver
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Resolver: 68984624572763018fd8ec7b8e3e8df0e3b6bba5
 
-PODFILE CHECKSUM: 2a6164818648d57d710d3f92cb988ab51662bf79
+PODFILE CHECKSUM: b25c271a7cc3b0f9ba42309a630e94fb33c0041b
 
 COCOAPODS: 1.11.2
