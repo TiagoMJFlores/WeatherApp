@@ -28,6 +28,10 @@ final class WeatherListPresenter {
 extension WeatherListPresenter: WeatherListDelegate {
     
 
+    fileprivate enum Constants {
+        static let limitDays = 4
+    }
+    
     func bindView(view: WeatherViewReceiver) {
         self.view = view
     }
@@ -44,7 +48,7 @@ extension WeatherListPresenter: WeatherListDelegate {
             switch result {
             case .success(let weatherDataContainer):
                
-                self.weatherViewData = self.mapModelDataToViewData(from: weatherDataContainer.weatherList)
+                self.weatherViewData = Array(self.mapModelDataToViewData(from: weatherDataContainer.weatherList).prefix(Constants.limitDays))
                   self.weatherViewData.sort(by: { $0.day.compare($1.day) == .orderedAscending })
                   self.view?.reloadData()
                  
@@ -58,6 +62,7 @@ extension WeatherListPresenter: WeatherListDelegate {
        
     private func sortWeatherByDay(from weatherList: [WeatherList]) ->  [String: [WeatherList]]  {
         var weatherData: [String: [WeatherList]] =  [String: [WeatherList]]()
+        
         for item in weatherList.sorted(by: { $0.dt > $1.dt}) {
             let date = Date(timeIntervalSince1970: TimeInterval(item.dt))
   
