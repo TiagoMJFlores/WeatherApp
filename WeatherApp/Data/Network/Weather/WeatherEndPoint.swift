@@ -14,7 +14,7 @@ enum WeatherEndPoint {
     var path: String {
         switch self {
         case .forecast(_):
-            return "\(NetworkConfigs.weatherAPIBaseURL)/forecast"
+            return "\(NetworkConfigs.weatherAPIBaseURL)/\(NetworkConfigs.WeatherURLPaths.forecast)"
         }
     }
     

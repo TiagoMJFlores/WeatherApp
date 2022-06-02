@@ -11,6 +11,7 @@
 		900E7DAF2849537200DF1F8E /* WeatherAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900E7DAE2849537200DF1F8E /* WeatherAPIClient.swift */; };
 		900E7DB92849636B00DF1F8E /* NetworkConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900E7DB82849636B00DF1F8E /* NetworkConfigs.swift */; };
 		900E7DBC284967BC00DF1F8E /* WeatherEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900E7DBB284967BC00DF1F8E /* WeatherEndPoint.swift */; };
+		900E7DC0284969B400DF1F8E /* WeatherDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E7DBF284969B400DF1F8E /* WeatherDateFormatter.m */; };
 		908C085C284807CB0008D8F3 /* WeatherDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 908C085B284807CB0008D8F3 /* WeatherDayCollectionViewCell.xib */; };
 		90B6EAFC28481EB100D3DE2A /* WeatherListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6EAFB28481EB100D3DE2A /* WeatherListInteractor.swift */; };
 		90F4DAAA284566900010B673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4DAA9284566900010B673 /* AppDelegate.swift */; };
@@ -61,6 +62,9 @@
 		900E7DAE2849537200DF1F8E /* WeatherAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIClient.swift; sourceTree = "<group>"; };
 		900E7DB82849636B00DF1F8E /* NetworkConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigs.swift; sourceTree = "<group>"; };
 		900E7DBB284967BC00DF1F8E /* WeatherEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEndPoint.swift; sourceTree = "<group>"; };
+		900E7DBD284969B400DF1F8E /* WeatherApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeatherApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		900E7DBE284969B400DF1F8E /* WeatherDateFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherDateFormatter.h; sourceTree = "<group>"; };
+		900E7DBF284969B400DF1F8E /* WeatherDateFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherDateFormatter.m; sourceTree = "<group>"; };
 		908C085B284807CB0008D8F3 /* WeatherDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherDayCollectionViewCell.xib; sourceTree = "<group>"; };
 		90B6EAFB28481EB100D3DE2A /* WeatherListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListInteractor.swift; sourceTree = "<group>"; };
 		90F4DAA6284566900010B673 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +149,8 @@
 		900E7DBA284967A200DF1F8E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				900E7DBE284969B400DF1F8E /* WeatherDateFormatter.h */,
+				900E7DBF284969B400DF1F8E /* WeatherDateFormatter.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 		90F4DAA8284566900010B673 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				900E7DBD284969B400DF1F8E /* WeatherApp-Bridging-Header.h */,
 				90F4DAE62845691B0010B673 /* Data */,
 				90B6EAFA28481E2700D3DE2A /* Domain */,
 				90B6EAF928481E1400D3DE2A /* App-Presentation */,
@@ -540,6 +547,7 @@
 				90F4DAAE284566900010B673 /* WeatherListViewController.swift in Sources */,
 				90F4DAF828456AD50010B673 /* WeatherListDataSource.swift in Sources */,
 				90F4DAEB2845697C0010B673 /* City.swift in Sources */,
+				900E7DC0284969B400DF1F8E /* WeatherDateFormatter.m in Sources */,
 				90F4DAEF284569BA0010B673 /* WeatherElement.swift in Sources */,
 				90B6EAFC28481EB100D3DE2A /* WeatherListInteractor.swift in Sources */,
 				900E7DAF2849537200DF1F8E /* WeatherAPIClient.swift in Sources */,
@@ -739,6 +747,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = test.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WeatherApp/WeatherApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -770,6 +779,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = test.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WeatherApp/WeatherApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

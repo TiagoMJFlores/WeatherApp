@@ -15,6 +15,10 @@ final class NetworkConfigs {
         case cityQuery = "q",
              appid = "appid"
     }
+    
+    enum WeatherURLPaths: String {
+        case forecast = "forecast"
+    }
 
 }
 

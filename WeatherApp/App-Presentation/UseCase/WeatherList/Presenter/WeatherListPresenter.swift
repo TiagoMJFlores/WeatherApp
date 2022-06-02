@@ -58,10 +58,8 @@ extension WeatherListPresenter: WeatherListDelegate {
         var weatherData: [String: [WeatherList]] =  [String: [WeatherList]]()
         for item in weatherList.sorted(by: { $0.dt > $1.dt}) {
             let date = Date(timeIntervalSince1970: TimeInterval(item.dt))
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MMMM, EEEE"
-            let dayStr: String = dateFormatter.string(from: date)
-            
+  
+            let dayStr: String = WeatherDateFormatter.date(toString: date)
             var elementsInDay = weatherData[dayStr]
             if elementsInDay == nil {
                 elementsInDay = []
