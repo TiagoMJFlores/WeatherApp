@@ -44,16 +44,21 @@ extension WeatherListPresenter: WeatherListDelegate {
     
     private func getData() {
         
-        interactor.getLisbonWeatherList { result in
+        view?.showLoading()
+        interactor.getLisbonWeatherList {  [weak self] result in
+            guard let safeSelf = self else {
+                return
+            }
+            safeSelf.view?.hideLoading()
             switch result {
             case .success(let weatherDataContainer):
                
-                self.weatherViewData = Array(self.mapModelDataToViewData(from: weatherDataContainer.weatherList).prefix(Constants.limitDays))
-                  self.weatherViewData.sort(by: { $0.day.compare($1.day) == .orderedAscending })
-                  self.view?.reloadData()
+                safeSelf.weatherViewData = Array(safeSelf.mapModelDataToViewData(from: weatherDataContainer.weatherList).prefix(Constants.limitDays))
+                safeSelf.weatherViewData.sort(by: { $0.day.compare($1.day) == .orderedAscending })
+                safeSelf.view?.reloadData()
                  
             case .failure(let error):
-                self.view?.showErrorAlert(message: error.localizedDescription)
+                safeSelf.view?.showErrorAlert(message: error.localizedDescription)
                 break
             }
         }
@@ -63,7 +68,7 @@ extension WeatherListPresenter: WeatherListDelegate {
     private func sortWeatherByDay(from weatherList: [WeatherList]) ->  [String: [WeatherList]]  {
         var weatherData: [String: [WeatherList]] =  [String: [WeatherList]]()
         
-        for item in weatherList.sorted(by: { $0.dt > $1.dt}) {
+        for item in weatherList.sorted(by: { $0.dt < $1.dt}) {
             let date = Date(timeIntervalSince1970: TimeInterval(item.dt))
   
             let dayStr: String = WeatherDateFormatter.date(toString: date)

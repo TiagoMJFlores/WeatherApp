@@ -14,6 +14,8 @@ final class WeatherListViewController: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
     
+    private let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    
     @Injected var presenter: WeatherListPresenterProtocol
     
     init(presenter: WeatherListPresenterProtocol) {
@@ -54,6 +56,7 @@ extension WeatherListViewController: UITableViewDataSource {
         }
         
         let itemPresenter = presenter.item(at: indexPath)
+       
         cell.configure(presenter: itemPresenter)
         return cell
     }
@@ -62,6 +65,18 @@ extension WeatherListViewController: UITableViewDataSource {
 
 // MARK: WeatherViewReceiver
 extension WeatherListViewController: WeatherViewReceiver {
+    
+    func showLoading() {
+        myActivityIndicator.center = view.center
+        myActivityIndicator.hidesWhenStopped = false
+        myActivityIndicator.startAnimating()
+        view.addSubview(myActivityIndicator)
+    }
+    
+    func hideLoading() {
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.removeFromSuperview()
+    }
     
     func showErrorAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)

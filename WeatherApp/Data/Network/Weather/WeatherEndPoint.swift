@@ -21,8 +21,10 @@ enum WeatherEndPoint {
     var queryParams: [String: String] {
         switch self {
         case .forecast(let city):
-            return [NetworkConfigs.WeatherURLQueryParams.cityQuery.rawValue: city, NetworkConfigs.WeatherURLQueryParams.appid.rawValue: NetworkConfigs.weatherAPIKey]
+            return [NetworkConfigs.WeatherURLQueryKeyParams.cityQuery.rawValue: city,
+                    NetworkConfigs.WeatherURLQueryKeyParams.appID.rawValue: NetworkConfigs.weatherAPIKey,
+                    NetworkConfigs.WeatherURLQueryKeyParams.temperatureUnit.rawValue: NetworkConfigs.WeatherURLQueryValueParams.temperatureKevin.rawValue]
         }
     }
-
+    
 }

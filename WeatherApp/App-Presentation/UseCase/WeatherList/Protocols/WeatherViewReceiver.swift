@@ -10,4 +10,6 @@ import Foundation
 protocol WeatherViewReceiver: AnyObject {
     func reloadData()
     func showErrorAlert(message: String)
+    func showLoading()
+    func hideLoading()
 }

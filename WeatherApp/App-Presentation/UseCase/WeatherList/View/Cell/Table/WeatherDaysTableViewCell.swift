@@ -22,6 +22,7 @@ final class WeatherDaysTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
 
     func configure(presenter: WeatherDayPresenterProtocol) {
+        self.selectionStyle = .none
         self.presenter = presenter
     }
     
