@@ -29,16 +29,16 @@ extension WeatherDayPresenter: WeatherCollectionDataSource  {
     
     func weatherDataStr(indexPath: IndexPath) -> String {
         let element = item(at: indexPath)
-        let result =  "Temperature: \(element.main.temp), Time: \(element.timeStr)"
+        let result =  "\(Translations.temperature): \(element.main.temp), \(Translations.time): \(element.timeStr)"
         return result
     }
     
     private func imageUrl(for indexPath: IndexPath) -> String? {
         let element = item(at: indexPath)
-        guard let weatherItem = element.weather.first else {
+        guard let weatherItem = element.weatherImages.first else {
             return nil
         }
-        let imageUrl =  "https://openweathermap.org/img/wn/\(weatherItem.icon)@2x.png"
+        let imageUrl =  "\(NetworkConfigs.weatherAPIImageRepoUrl)\(weatherItem.icon)@2x.png"
         return imageUrl
     }
     

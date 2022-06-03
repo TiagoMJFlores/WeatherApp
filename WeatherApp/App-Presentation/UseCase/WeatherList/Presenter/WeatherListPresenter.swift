@@ -12,7 +12,7 @@ typealias WeatherListPresenterProtocol = WeatherListDelegate & WeatherListDataSo
 
 final class WeatherListPresenter {
     
-    weak var view: WeatherViewReceiver?
+    weak var view: WeatherViewReceiverProtocol?
     
     @Injected var interactor: WeatherListInteractorProtocol
     @Injected var imageDownloader: ImageDownloaderProtocol
@@ -32,7 +32,7 @@ extension WeatherListPresenter: WeatherListDelegate {
         static let limitDays = 4
     }
     
-    func bindView(view: WeatherViewReceiver) {
+    func bindView(view: WeatherViewReceiverProtocol) {
         self.view = view
     }
 

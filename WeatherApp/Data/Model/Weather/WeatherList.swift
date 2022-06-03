@@ -10,7 +10,7 @@ import Foundation
 struct WeatherList: Codable {
     let dt: Int
     let main: WeatherLevels
-    let weather: [WeatherElement]
+    let weatherImages: [WeatherImage]
     let visibility: Int
     let pop: Double
     let dtTxt: String
@@ -26,7 +26,8 @@ struct WeatherList: Codable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case dt, main, weather,  visibility, pop
+        case dt, main,  visibility, pop
+        case weatherImages = "weather"
         case dtTxt = "dt_txt"
     }
 }

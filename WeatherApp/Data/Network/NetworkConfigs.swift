@@ -10,7 +10,8 @@ import Foundation
 final class NetworkConfigs {
     static let weatherAPIKey =  "5b9b1ff07f3972c825ba43eb281a31c7"
     static let weatherAPIBaseURL =  "https://api.openweathermap.org/data/2.5"
-
+    static let weatherAPIImageRepoUrl = "https://openweathermap.org/img/wn/"
+    
     enum WeatherURLQueryKeyParams: String {
         case cityQuery = "q",
              appID = "appid",

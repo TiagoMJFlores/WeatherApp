@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
-protocol WeatherViewReceiver: AnyObject {
+protocol WeatherViewReceiverProtocol where Self: UIViewController {
     func reloadData()
     func showErrorAlert(message: String)
     func showLoading()

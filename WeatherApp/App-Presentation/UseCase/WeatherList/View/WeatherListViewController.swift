@@ -64,7 +64,7 @@ extension WeatherListViewController: UITableViewDataSource {
 }
 
 // MARK: WeatherViewReceiver
-extension WeatherListViewController: WeatherViewReceiver {
+extension WeatherListViewController: WeatherViewReceiverProtocol {
     
     func showLoading() {
         myActivityIndicator.center = view.center

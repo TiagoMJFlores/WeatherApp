@@ -9,5 +9,5 @@ import Foundation
 
 protocol WeatherListDelegate {
     func loadData()
-    func bindView(view: WeatherViewReceiver)
+    func bindView(view: WeatherViewReceiverProtocol)
 }
